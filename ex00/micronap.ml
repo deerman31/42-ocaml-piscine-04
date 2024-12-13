@@ -5,8 +5,17 @@ let micro_nap x =
     my_sleep ()
   done
 
-let get_arg () = try int_of_string Sys.argv.(1) with _ -> 0
+let get_arg () =
+  try Some Sys.argv.(1)
+  with Invalid_argument _ ->
+    print_endline "Argument required";
+    None
 
 let () =
-  let arg = get_arg () in
-  micro_nap arg
+  match get_arg () with
+  | Some arg -> (
+      match int_of_string_opt arg with
+      | Some num when num > 0 -> micro_nap num
+      | Some _ -> print_endline "Argument must be a positive integer."
+      | None -> print_endline "invalid argument")
+  | None -> ()
