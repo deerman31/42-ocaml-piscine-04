@@ -1,13 +1,21 @@
-let string_prefix_equal s1 s2 n =
-  let n = min n (min (String.length s1) (String.length s2)) in
-  String.sub s1 0 n = String.sub s2 0 n
+let strlen s =
+  let rec len_helper s pos =
+    try
+      let _ = s.[pos] in
+      len_helper s (pos + 1)
+    with Invalid_argument _ -> pos
+  in
+  len_helper s 0
 
-
+let split str sep =
+  let len = strlen str in
+  let rec loop acc1 acc2 index =
+    if index = (len - 1) then acc1
+    else (
+      match str.[index] = sep with
+      | true -> 
+      | false -> 
+    )
 
 let () =
-  let s1 = "42tokyo: paris" in
-  let s2 = "42Tokyo: " in
-
-  print_endline s1;
-  print_endline s2;
-  print_endline (string_of_bool (string_prefix_equal s1 s2 (String.length s2 -0)))
+  print_endline (string_of_int (strlen ""))

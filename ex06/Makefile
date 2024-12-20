@@ -3,7 +3,7 @@ OCAMLOPT = ocamlopt
 FLAGS = -I build
 
 # ソースファイル
-ML_SOURCES = eu_dist.ml
+ML_SOURCES = examples_of_file.ml
 CMX_OBJECTS = $(ML_SOURCES:%.ml=build/%.cmx)
 
 # 実行ファイル名
